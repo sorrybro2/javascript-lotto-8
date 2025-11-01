@@ -18,19 +18,23 @@ class App {
 
     Console.print(`${count}개를 구매했습니다.`);
 
-    // 티켓 개수만큼 6개 숫자 랜덤돌리기 (Lotto.js)
-    const tickets = Array.from({length: count}, () => {
+    // 티켓 개수만큼 6개 숫자 랜덤돌리고 로또 티켓 만들기
+    const tickets = []
+
+    for(let i = 0; i < count; i++){
       const nums = Random.pickUniqueNumbersInRange(1, 45, 6);
       const lotto = new Lotto(nums);
       Console.print(lotto.toString());
-      return lotto;
-    });
+      tickets.push(lotto);
+    }
 
     // 당첨 번호와 보너스 번호 입력
     const winning = await this.#askWinningNum();
     const bonus = await this.#askBounsNum(winning);
 
     // 당첨 통계 및 수익률 출력하기
+    const stats = this.#calcStats(tickets, winning, bonus);
+    this.#printStats(stats, amount)
   }
 
   async #askAmount(){
@@ -86,10 +90,39 @@ class App {
         if(WinningNum.includes(num)){
           throw new Error("[ERROR] 보너스 번호는 당첨 번호와 중복될 수 없습니다.")
         }
+        return num;
       } catch (e) {
         Console.print(e.message);
       }
     }
+  }
+
+  async #calcStats(tickets, winning, bonus){
+    const counts = { 3:0, 4:0, 5:0, "5b":0, 6:0 };
+
+    tickets.forEach(t => {
+      const match = t.numbers.filter(n => winning.includes(n)).length;
+
+      if (match == 6) {
+        counts[6]++;
+      }else if (match == 5) { 
+        if (t.numbers.includes(bonus)) counts["5b"]++;
+        else counts[5]++;
+      }else if (match == 4) {
+        counts[4]++;
+      }else if (match == 3) {
+        counts[3]++;
+      }
+    });
+
+    const total = 
+      counts[6] * PRIZE[6] +
+      counts["5b"] * PRIZE["5b"] +
+      counts[5] * PRIZE[5] +
+      counts[4] * PRIZE[4] +
+      counts[3] * PRIZE[3] 
+
+    return { counts, total }
   }
 }
 
