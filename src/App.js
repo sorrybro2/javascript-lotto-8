@@ -75,7 +75,7 @@ class App {
   async #askBounsNum(WinningNum){
     while(true){
       try {
-        const input = Console.readLineAsync("보너스 번호를 입력해 주세요.\n");
+        const input = await Console.readLineAsync("보너스 번호를 입력해 주세요.\n");
         
         if (input.includes(",")){
           throw new Error("[ERROR] 보너스 번호는 하나의 숫자만 가능합니다.");
@@ -97,7 +97,7 @@ class App {
     }
   }
 
-  async #calcStats(tickets, winning, bonus){
+  #calcStats(tickets, winning, bonus){
     const counts = { 3:0, 4:0, 5:0, "5b":0, 6:0 };
 
     tickets.forEach(t => {
@@ -120,9 +120,23 @@ class App {
       counts["5b"] * PRIZE["5b"] +
       counts[5] * PRIZE[5] +
       counts[4] * PRIZE[4] +
-      counts[3] * PRIZE[3] 
+      counts[3] * PRIZE[3];
 
-    return { counts, total }
+    return { counts, total };
+  }
+
+  #printStats({counts,total}, amount){
+    const rate = (total/amount) * 100;
+    const rounded = Math.round(rate * 10)/10;
+
+    Console.print("당첨 통계");
+    Console.print("---------");
+    Console.print(`3개 일치 (5,000원) - ${counts[3]}개`);
+    Console.print(`4개 일치 (50,000원) - ${counts[4]}개`);
+    Console.print(`5개 일치 (1,500,000원) - ${counts[5]}개`);
+    Console.print(`5개 일치, 보너스 볼 일치 (30,000,000원) - ${counts["5b"]}개`);
+    Console.print(`6개 일치 (2,000,000,000원) - ${counts[6]}개`);
+    Console.print(`총 수익률은 ${rounded}%입니다.`);
   }
 }
 
