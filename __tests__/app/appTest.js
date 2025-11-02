@@ -1,11 +1,11 @@
 import App from "../../src/App.js";
 import { mockQuestions, mockRandoms, getLogSpy, resetAll } from "../helpers/testUtils.js";
 
-describe("App - 기능", () => {
+describe("App - 성공 플로우", () => {
   beforeEach(() => resetAll());
 
-  test("기능 테스트 - 요구 로그 전체 확인", async () => {
-    const logSpy = getLogSpy();
+  test("예시 출력과 일치 + 수익률 포맷", async () => {
+    const log = getLogSpy();
     mockRandoms([
       [8, 21, 23, 41, 42, 43],
       [3, 5, 11, 16, 32, 38],
@@ -31,6 +31,8 @@ describe("App - 기능", () => {
       "[7, 11, 30, 40, 42, 43]",
       "[2, 13, 22, 32, 38, 45]",
       "[1, 3, 5, 14, 22, 45]",
+      "당첨 통계",
+      "---------",
       "3개 일치 (5,000원) - 1개",
       "4개 일치 (50,000원) - 0개",
       "5개 일치 (1,500,000원) - 0개",
@@ -38,7 +40,7 @@ describe("App - 기능", () => {
       "6개 일치 (2,000,000,000원) - 0개",
       "총 수익률은 62.5%입니다.",
     ].forEach((s) => {
-      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(s));
+      expect(log).toHaveBeenCalledWith(expect.stringContaining(s));
     });
   });
 });
