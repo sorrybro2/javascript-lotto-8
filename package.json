@@ -19,7 +19,11 @@
   "jest": {
     "transform": {
       "\\.js$": "babel-jest"
-    }
+    },
+    "testPathIgnorePatterns" : [
+      "/node_modules/",
+      "/__tests__/helpers/"
+    ]
   },
   "babel": {
     "presets": [
@@ -30,4 +34,5 @@
     "npm": ">=10.8.2",
     "node": ">=22.19.0"
   }
+  
 }
