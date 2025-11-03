@@ -36,7 +36,7 @@ class App {
     const stats = this.#calcStats(tickets, winning, bonus);
     this.#printStats(stats, amount)
   }
-
+  
   async #askAmount(){
     while(true){
       try{
