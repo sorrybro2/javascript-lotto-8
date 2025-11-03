@@ -1,4 +1,4 @@
-import WinningNumber from "../model/winningNumber.js";
+import WinningNumber from "../model/WinningNumber.js";
 import InputView from "../view/InputView.js";
 
 export default class WinningController{

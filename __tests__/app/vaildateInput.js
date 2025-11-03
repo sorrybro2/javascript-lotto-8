@@ -1,4 +1,4 @@
-import App from "../../src/app/App.js";
+import App from "../../src/App.js";
 import { mockQuestions, mockRandoms, getLogSpy, resetAll } from "../helpers/testUtils.js";
 
 describe("App - 입력 예외 후 재입력 플로우", () => {
