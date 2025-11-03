@@ -1,4 +1,6 @@
 import PurchaseController from "../controller/PurchaseController";
+import ResultController from "../controller/ResultController";
+import WinningController from "../controller/WinningController";
 
 class App{
     async run() {
