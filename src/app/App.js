@@ -1,3 +1,5 @@
+import PurchaseController from "../controller/PurchaseController";
+
 class App{
     async run() {
         const tickets = await PurchaseController.buy();
