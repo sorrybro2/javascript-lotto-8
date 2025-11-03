@@ -1,7 +1,7 @@
 import Lotto from "./Lotto.js";
 import { Console, Random } from "@woowacourse/mission-utils";
 
-const PRICE = 1000;
+const PRICE = 1_000;
 const PRIZE = {
   3: 5_000,
   4: 50_000,
