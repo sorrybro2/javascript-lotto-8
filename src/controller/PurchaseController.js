@@ -1,7 +1,7 @@
-import LottoService from "../service/LottoService";
-import { PRICE } from "../util/constants";
-import InputView from "../view/InputView";
-import OutputView from "../view/OutputView";
+import LottoService from "../service/LottoService.js";
+import { PRICE } from "../util/constants.js";
+import InputView from "../view/InputView.js";
+import OutputView from "../view/OutputView.js";
 
 export default class PurchaseController{
     static async buy(){
@@ -10,6 +10,6 @@ export default class PurchaseController{
         const tickets = LottoService.generateTickets(count);
         OutputView.printTickets(tickets);
 
-        return tickets;
+        return { tickets, amount };
     }
 }

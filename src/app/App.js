@@ -1,12 +1,12 @@
-import PurchaseController from "../controller/PurchaseController";
-import ResultController from "../controller/ResultController";
-import WinningController from "../controller/WinningController";
+import PurchaseController from "../controller/PurchaseController.js";
+import ResultController from "../controller/ResultController.js";
+import WinningController from "../controller/WinningController.js";
 
 class App{
     async run() {
-        const tickets = await PurchaseController.buy();
+        const { tickets,amount } = await PurchaseController.buy();
         const winning = await WinningController.input();
-        await ResultController.show(tickets, winning);
+        await ResultController.show(tickets, amount, winning);
     }
 }
 

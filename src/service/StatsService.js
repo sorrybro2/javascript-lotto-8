@@ -1,4 +1,4 @@
-import { PRIZE } from "../util/constants";
+import { PRIZE } from "../util/constants.js";
 
 export default class StatsService{
     static buildResult(tickets, winning){
