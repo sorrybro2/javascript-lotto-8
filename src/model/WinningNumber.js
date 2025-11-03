@@ -2,19 +2,19 @@ import Lotto from './Lotto.js';
 
 export default class WinningNumber {
     #set;
-    #bouns;
+    #bonus;
 
-    constructor(mainNumbers, bouns){
+    constructor(mainNumbers, bonus){
         const lotto = new Lotto(mainNumbers);
         this.#set = new Set(lotto.numbers);
 
-        if(!Number.isInteger(bouns) || bouns < 1 || bouns > 45){
+        if(!Number.isInteger(bonus) || bonus < 1 || bonus > 45){
             throw new Error('[ERROR] 보너스 번호는 1~45사이의 정수여야 합니다.');
         }
-        if (this.#set.has(bouns)){
+        if (this.#set.has(bonus)){
             throw new Error('[ERROR] 보너스 번호는 당첨 번호와 중복될 수 없습니다.');
         }
-        this.#bouns = bouns;
+        this.#bonus = bonus;
     }
 
     has(n) {
@@ -22,6 +22,6 @@ export default class WinningNumber {
     }
 
     isBonusMatched(ticket){
-        return ticket.numbers.includes(this.#bouns);
+        return ticket.numbers.includes(this.#bonus);
     }
 }

@@ -31,7 +31,7 @@ class App {
 
     // 당첨 번호와 보너스 번호 입력
     const winning = await this.#askWinningNum();
-    const bonus = await this.#askBounsNum(winning);
+    const bonus = await this.#askBonusNum(winning);
 
     // 당첨 통계 및 수익률 출력하기
     const stats = this.#calcStats(tickets, winning, bonus);
@@ -74,7 +74,7 @@ class App {
     }
   }
 
-  async #askBounsNum(WinningNum){
+  async #askBonusNum(WinningNum){
     while(true){
       try {
         const input = await Console.readLineAsync("보너스 번호를 입력해 주세요.\n");
