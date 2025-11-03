@@ -1,6 +1,7 @@
 import Lotto from "./Lotto.js";
 import { Console, Random } from "@woowacourse/mission-utils";
 
+// util/constants
 const PRICE = 1_000;
 const PRIZE = {
   3: 5_000,
@@ -18,7 +19,7 @@ class App {
 
     Console.print(`${count}개를 구매했습니다.`);
 
-    // 티켓 개수만큼 6개 숫자 랜덤돌리고 로또 티켓 만들기
+    // service/LottoService 티켓 개수만큼 6개 숫자 랜덤돌리고 로또 티켓 만들기
     const tickets = []
 
     for(let i = 0; i < count; i++){
@@ -36,7 +37,8 @@ class App {
     const stats = this.#calcStats(tickets, winning, bonus);
     this.#printStats(stats, amount)
   }
-  
+
+  // view/inputView
   async #askAmount(){
     while(true){
       try{
@@ -97,6 +99,7 @@ class App {
     }
   }
 
+// service/StatsService
   #calcStats(tickets, winning, bonus){
     const counts = { 3:0, 4:0, 5:0, "5b":0, 6:0 };
 
