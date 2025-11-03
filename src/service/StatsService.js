@@ -5,7 +5,7 @@ export default class StatsService{
         const counts = { 3:0, 4:0, 5:0, "5b":0, 6:0};
 
         tickets.forEach(t=>{
-            const match = t.numbers.filter(n => winning.has(n)).length;
+            const match = t.numbers.filter((n) => winning.has(n)).length;
 
             if (match === 6) counts[6]++;
             else if (match === 5) (winning.isBonusMatched(t) ? counts['5b']++ : counts[5]++);

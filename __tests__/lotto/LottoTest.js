@@ -1,4 +1,4 @@
-import Lotto from "../../src/Lotto";
+import Lotto from "../../src/model/Lotto.js";
 
 describe("Lotto (도메인)", () => {
   test("6개가 아니면 예외", () => {

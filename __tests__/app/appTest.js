@@ -1,4 +1,4 @@
-import App from "../../src/App.js";
+import App from "../../src/app/App.js";
 import { mockQuestions, mockRandoms, getLogSpy, resetAll } from "../helpers/testUtils.js";
 
 describe("App - 성공 플로우", () => {

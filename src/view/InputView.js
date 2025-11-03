@@ -1,5 +1,6 @@
 import { Console } from '@woowacourse/mission-utils';
 import { PRICE } from '../util/constants.js';
+import Lotto from '../model/Lotto.js';
 
 const InputView = {
   async readAmount() {
@@ -24,7 +25,8 @@ const InputView = {
       try {
         const input = await Console.readLineAsync('당첨 번호를 입력해 주세요.\n');
         const nums = input.split(',').map(s => Number(s));
-        return nums;
+        const lotto = new Lotto(nums);
+        return lotto.numbers;
       } catch (e) {
         Console.print(e.message);
       }
