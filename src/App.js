@@ -1,6 +1,6 @@
-import PurchaseController from "../controller/PurchaseController.js";
-import ResultController from "../controller/ResultController.js";
-import WinningController from "../controller/WinningController.js";
+import PurchaseController from "./controller/PurchaseController.js";
+import ResultController from "./controller/ResultController.js";
+import WinningController from "./controller/WinningController.js";
 
 class App{
     async run() {
