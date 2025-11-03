@@ -128,6 +128,7 @@ class App {
     return { counts, total };
   }
 
+  // view/OutputView
   #printStats({counts,total}, amount){
     const rate = (total/amount) * 100;
     const rounded = Math.round(rate * 10)/10;

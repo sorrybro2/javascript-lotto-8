@@ -24,7 +24,6 @@ const InputView = {
       try {
         const input = await Console.readLineAsync('당첨 번호를 입력해 주세요.\n');
         const nums = input.split(',').map(s => Number(s));
-        // 유효성은 Lotto가 검증
         return nums;
       } catch (e) {
         Console.print(e.message);
